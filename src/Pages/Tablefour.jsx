@@ -133,7 +133,7 @@ return()=>{
 
   return (
     <div>
-      <h1>Production Schedule</h1>
+      <h1 style={{textAlign:"center"}}>Production Schedule</h1>
       <div style={{display:"flex", justifyContent:"space between", padding:"30px 10px"}}>
       <div style={{display:"flex" , padding:"10px 5px", gap:"20px"}}>
       <button onClick={startTimer} style={{padding:"5px 20px", border:"1px solid", borderRadius:"10px", fontSize:"20px", fontWeight:"bolder"}} disabled={!!id}>Start</button>

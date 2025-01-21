@@ -27,7 +27,6 @@ export default function CrudDataTable() {
     localStorage.setItem(`${selectedState}`, JSON.stringify(rows));
   }, [rows]);
   useEffect(() => {
-    console.log("hihih");
 
     const storedData = localStorage.getItem(`${selectedState}`);
     setRows(storedData ? JSON.parse(storedData) : []);
@@ -388,27 +387,6 @@ export default function CrudDataTable() {
           onMouseUp={(e) => (e.target.style.transform = "scale(1)")}
         >
           Hourly Production{" "}
-        </button>
-        <button
-          onClick={() => setSelectedState("Rajasthan")}
-          style={{
-            backgroundColor: "#4CAF50",
-            color: "white",
-            padding: "10px 20px",
-            margin: "5px",
-            border: "none",
-            borderRadius: "8px",
-            cursor: "pointer",
-            fontSize: "16px",
-            boxShadow: "0 4px 6px rgba(0, 0, 0, 0.1)",
-            transition: "background-color 0.3s, transform 0.2s",
-          }}
-          onMouseOver={(e) => (e.target.style.backgroundColor = "#45a049")}
-          onMouseOut={(e) => (e.target.style.backgroundColor = "#4CAF50")}
-          onMouseDown={(e) => (e.target.style.transform = "scale(0.95)")}
-          onMouseUp={(e) => (e.target.style.transform = "scale(1)")}
-        >
-          Rajasthan
         </button>
       </div>
 
