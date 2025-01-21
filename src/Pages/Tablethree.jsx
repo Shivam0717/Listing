@@ -3,12 +3,20 @@ import CustomDataGrid from '../Components/CustomDatagrid'; // Import your Custom
 import { Button, Modal, TextField, Box } from '@mui/material';
 import { Add, Edit, Delete } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
+import * as XLSX from "xlsx";
 
 function Tablethree() {
   const [paginationModel, setPaginationModel] = useState({
     page: 0,
     pageSize: 10,
   });
+
+    const handleExportToExcel = () => {
+        const worksheet = XLSX.utils.json_to_sheet(rows);
+        const workbook = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(workbook, worksheet, "Data");
+        XLSX.writeFile(workbook, "DataEntry.xlsx");
+      };
 
   const navigate=useNavigate()
 
@@ -58,6 +66,12 @@ function Tablethree() {
     },
   ];
 
+    const[url,setUrl]=useState("")
+    useEffect(()=>{
+  
+     setUrl(window.location.href)
+    },[])
+
   const [id,setId]=useState(null)
     const [countdown,setCountdown]=useState(60)
   
@@ -82,7 +96,7 @@ function Tablethree() {
           clearInterval(id)
         }
       }
-    }, [id]);
+    }, [id,url]);
 
   // Save data to localStorage whenever rows change
   useEffect(() => {
@@ -154,6 +168,13 @@ function Tablethree() {
       >
         Add New
       </Button>
+    <Button
+                        variant="contained"
+                        color="secondary"
+                        onClick={handleExportToExcel}
+                      >
+                        Export to Excel
+                      </Button>
 
       <div style={{ height: 400, width: '100%' }}>
         <CustomDataGrid
