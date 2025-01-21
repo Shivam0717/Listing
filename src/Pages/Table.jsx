@@ -198,6 +198,12 @@ export default function CrudDataTable() {
     }
   };
 
+    const[url,setUrl]=useState("")
+    useEffect(()=>{
+  
+     setUrl(window.location.href)
+    },[])
+
   useEffect(() => {
     return () => {
       startTimer();
@@ -205,7 +211,7 @@ export default function CrudDataTable() {
         clearInterval(intervalId);
       }
     };
-  }, [intervalId]);
+  }, [intervalId,url]);
 
   return (
     <>
